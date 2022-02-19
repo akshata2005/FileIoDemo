@@ -11,6 +11,10 @@ namespace FileIoOperations
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Serialization");
+            BinarySerialization.Serialization();
+            Console.WriteLine("Deserialization");
+            BinarySerialization.Deserialization();
             string path = @"D:\FileIoOperations\FileIoDemo\FileIoOperations\FileIoOperations\Files\Sample.txt";
             string dest = @"D:\FileIoOperations\FileIoDemo\FileIoOperations\FileIoOperations\Files\CopyFile.txt";
             CheckIfFlieExits(path);
