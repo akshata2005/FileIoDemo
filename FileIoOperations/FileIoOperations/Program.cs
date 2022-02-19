@@ -12,9 +12,13 @@ namespace FileIoOperations
         static void Main(string[] args)
         {
             string path = @"D:\FileIoOperations\FileIoDemo\FileIoOperations\FileIoOperations\Files\Sample.txt";
-           // CheckIfFlieExits(path);
-            //readDataLineByLine(path);
-            readDataAtOnce(path);
+            string dest = @"D:\FileIoOperations\FileIoDemo\FileIoOperations\FileIoOperations\Files\CopyFile.txt";
+            CheckIfFlieExits(path);
+           // readDataLineByLine(path);
+            //readDataAllAtOnce(path);
+           // FileCopyFromSourceToDestination(path);
+            //DeleteFile(dest);
+            readingformStreamReader(path);
             Console.ReadLine();
         }
         public static bool CheckIfFlieExits(string path)
@@ -42,13 +46,42 @@ namespace FileIoOperations
                 }
             }
         }
-        public static void readDataAtOnce(string path)
+        public static void readDataAllAtOnce(string path)
         {
             if (CheckIfFlieExits(path))
             {
                 string Lines = File.ReadAllText(path);// read all data at once
                 Console.WriteLine(Lines);
             }
+        }
+        public static void FileCopyFromSourceToDestination(string path)
+        {
+            string dest = @"D:\FileIoOperations\FileIoDemo\FileIoOperations\FileIoOperations\Files\CopyFile.txt";
+            if (CheckIfFlieExits(path))
+            {
+                File.Copy(path, dest);// CopyAll data to file all data at once
+            }
+        }
+        //public static void DeleteFile(string path)
+        //{
+        //    if (CheckIfFlieExits(path))
+        //    {
+        //        File.Delete(path);
+        //    }
+        //}
+        public static void readingformStreamReader(string path)
+        {
+            string line = null;
+            if(CheckIfFlieExits(path))
+            {
+                StreamReader sr = File.OpenText(path);
+                // line = sr.ReadLine();
+                while ((line = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+            
         }
     }
 }
